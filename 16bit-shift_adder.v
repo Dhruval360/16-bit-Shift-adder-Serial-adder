@@ -16,6 +16,10 @@ module or3 (input wire i0, i1, i2, output wire o);
   or2 or2_1 (i2, t, o);
 endmodule
 
+module xor2 (input wire i0, i1, output wire o);
+  assign o = i0 ^ i1;
+endmodule
+
 module xor3 (input wire i0, i1, i2, output wire o);
   wire t;
   xor2 xor2_0 (i0, i1, t);
@@ -106,7 +110,22 @@ wire intermediate[14:0];
   dfr d13(clk, reset, intermediate[3], intermediate[2]);
   dfr d14(clk, reset, intermediate[2], intermediate[1]);
   dfr d15(clk, reset, intermediate[1], intermediate[0]);
-  assign sum = {in1, intermediate[14:0]};
+  assign sum[0] = intermediate[0];
+  assign sum[1] = intermediate[1];
+  assign sum[2] = intermediate[2];
+  assign sum[3] = intermediate[3];
+  assign sum[4] = intermediate[4];
+  assign sum[5] = intermediate[5];
+  assign sum[6] = intermediate[6];
+  assign sum[7] = intermediate[7];
+  assign sum[8] = intermediate[8];
+  assign sum[9] = intermediate[9];
+  assign sum[10] = intermediate[10];
+  assign sum[11] = intermediate[11];
+  assign sum[12] = intermediate[12];
+  assign sum[13] = intermediate[13];
+  assign sum[14] = intermediate[14];
+  assign sum[15] = in1;
 endmodule
 
 module shift_adder (input wire clk, reset, input wire [15:0] a, b, output wire [15:0] op, output wire carry);
