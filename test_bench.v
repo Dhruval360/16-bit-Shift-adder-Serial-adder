@@ -10,7 +10,7 @@ module tb;
     
     initial begin $dumpfile("test.vcd"); $dumpvars(0,tb); end
     initial begin
-        reset = 1'b1; 
+        reset = 1'b1; // Resetting all the flip flops in the circuit
         load = 1'b0;
         #5
         reset = 1'b0;
@@ -18,7 +18,7 @@ module tb;
         a = 16'b0101011101001001; // Loading a number into register a
         b = 16'b1000001110101001; // Loading a number into register b
         #5
-        load = 1'b0;
+        load = 1'b0; // Enabling shift for the registers
         #160 $finish;
     end
     initial clk = 1'b1; always #5 clk =~ clk;
